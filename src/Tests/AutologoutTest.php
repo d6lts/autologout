@@ -337,6 +337,30 @@ class AutologoutTest extends WebTestBase {
   }
 
   /**
+   * Test the behaviour of custom message displayed on autologout
+   */
+  public function testCustomMessage() {
+
+    $autologout_settings = $this->configFactory->getEditable('autologout.settings');
+    $inactivity_message = 'Custom message for test';
+
+    // Update message string in configuration
+    $autologout_settings->set('inactivity_message', $inactivity_message)
+      ->save();
+
+    // Set time out for 10 seconds
+    $autologout_settings->set('timeout', 10)
+      ->save();
+
+    // wait for 20 seconds for timeout
+    sleep(20);
+
+    // Access the admin page and verify user is logged out and custom message is displayed
+    $this->drupalGet('admin/reports/status');
+    $this->assertText(t($inactivity_message), 'User sees custom message');
+  }
+
+  /**
    * Assert the timeout for a particular user.
    *
    * @param int $uid
