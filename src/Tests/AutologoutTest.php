@@ -361,6 +361,30 @@ class AutologoutTest extends WebTestBase {
   }
 
   /**
+   * Test the behaviour of application when Autologout is enabled for admin.
+   */
+  public function testAutologoutAdminPages() {
+
+    $autologout_settings = $this->configFactory->getEditable('autologout.settings');
+    // Enforce auto logout of admin pages.
+    $autologout_settings->set('enforce_admin', TRUE)
+      ->save();
+    // Set time out as 10 seconds.
+    $autologout_settings->set('timeout', 10)
+      ->save();
+    // Verify admin should not be logged out.
+    $this->drupalGet('admin/reports/status');
+    $this->assertResponse('200', 'Admin pages are accessible');
+
+    // Wait until timeout.
+    sleep(20);
+
+    // Verify admin should be logged out.
+    $this->drupalGet('admin/reports/status');
+    $this->assertText(t('You have been logged out due to inactivity.'), 'User sees inactivity message.');
+  }
+
+  /**
    * Assert the timeout for a particular user.
    *
    * @param int $uid
