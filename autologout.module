@@ -159,7 +159,7 @@ function autologout_page_attachments(array &$page) {
   $timeout = $autologout_manager->getUserTimeout();
   $timeout_padding = $settings->get('padding');
   $redirect_url = $settings->get('redirect_url');
-  $redirect_query = \Drupal::service('redirect.destination')->getAsArray() + array('timeout' => 1);
+  $redirect_query = \Drupal::service('redirect.destination')->getAsArray() + array('autologout_timeout' => 1);
   $no_dialog = $settings->get('no_dialog');
   $use_alt_logout_method = $settings->get('use_alt_logout_method');
 
