@@ -263,9 +263,14 @@ class AutologoutSettingsForm extends ConfigFormBase {
     }
 
     $timeout = $values['timeout'];
-
     // Validate timeout.
-    if (!is_numeric($timeout) || ((int) $timeout != $timeout) || $timeout < 60 || $timeout > $max_timeout) {
+    if ($timeout < 60) {
+      $form_state->setErrorByName('timeout', $this->t('The timeout value must be an integer 60 seconds or greater.'));
+    }
+    elseif ($max_timeout <= 60) {
+      $form_state->setErrorByName('max_timeout', $this->t('The max timeout must be an integer greater than 60.'));
+    }
+    elseif (!is_numeric($timeout) || ((int) $timeout != $timeout) || $timeout < 60 || $timeout > $max_timeout) {
       $form_state->setErrorByName('timeout', $this->t('The timeout must be an integer greater than 60 and less then %max.', array('%max' => $max_timeout)));
     }
 
