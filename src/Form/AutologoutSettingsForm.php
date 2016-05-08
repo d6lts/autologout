@@ -122,7 +122,7 @@ class AutologoutSettingsForm extends ConfigFormBase {
       '#type' => 'checkbox',
       '#title' => $this->t('Use alternate logout method'),
       '#default_value' => $config->get('use_alt_logout_method'),
-      '#description' => $this->t('Normally when auto logout is triggered, it is done via an AJAX service call. Sites that use an SSO provider, such as CAS, are likely to see this request fail with the error "Origin is not allowed by Access-Control-Allow-Origin". The alternate appraoch is to have the auto logout trigger a page redirect to initiate the logout process instead.'),
+      '#description' => $this->t('Normally when auto logout is triggered, it is done via an AJAX service call. Sites that use an SSO provider, such as CAS, are likely to see this request fail with the error "Origin is not allowed by Access-Control-Allow-Origin". The alternate approach is to have the auto logout trigger a page redirect to initiate the logout process instead.'),
     );
 
     $form['message']  = array(
@@ -172,7 +172,7 @@ class AutologoutSettingsForm extends ConfigFormBase {
         'name' => $this->t('Role Name'),
         'timeout' => $this->t('Timeout (seconds)'),
       ),
-      '#title' => $this->t('If Enabled every user in role will be logged out based on that roles timeout, unless the user has an indivual timeout set.'),
+      '#title' => $this->t('If Enabled every user in role will be logged out based on that roles timeout, unless the user has an individual timeout set.'),
       '#states' => array(
         'visible' => array(
           // Only show this field when the 'role_logout' checkbox is enabled.
