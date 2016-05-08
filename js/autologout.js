@@ -221,7 +221,7 @@
 
       Drupal.Ajax['autologout.getTimeLeft'] = Drupal.ajax({
         base: null,
-        element: $(document.body),
+        element: document.body,
         url: drupalSettings.path.baseUrl + 'autologout_ajax_get_time_left',
         event: 'autologout.getTimeLeft',
         error: function (XMLHttpRequest, textStatus) {
@@ -271,7 +271,7 @@
 
       Drupal.Ajax['autologout.refresh'] = Drupal.ajax({
         base: null,
-        element: $(document.body),
+        element: document.body,
         url: drupalSettings.path.baseUrl + 'autologout_ahah_set_last',
         event: 'autologout.refresh',
         error: function (XMLHttpRequest, textStatus) {
