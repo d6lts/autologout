@@ -20,6 +20,7 @@
 
       var paddingTimer;
       var theDialog;
+      var t;
       var localSettings;
 
       // Activity is a boolean used to detect a user has
