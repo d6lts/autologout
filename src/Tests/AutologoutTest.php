@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Simpletest tests for autologout.
- */
-
 namespace Drupal\autologout\Tests;
 
 use Drupal\simpletest\WebTestBase;

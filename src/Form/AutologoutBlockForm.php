@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\autologout\Form\AutologoutBlockForm.
- */
-
 namespace Drupal\autologout\Form;
 
 use Drupal\autologout\AutologoutManagerInterface;

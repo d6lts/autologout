@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\autologout\Plugin\Block\AutologoutWarningBlock.
- */
-
 namespace Drupal\autologout\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;

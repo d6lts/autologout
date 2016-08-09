@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\autologout\Controller\AutologoutController.
- */
 
 namespace Drupal\autologout\Controller;
 

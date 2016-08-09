@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\autologout\Form\AutologoutSettingsForm.
- */
-
 namespace Drupal\autologout\Form;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
