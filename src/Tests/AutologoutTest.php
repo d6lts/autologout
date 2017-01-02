@@ -99,7 +99,7 @@ class AutologoutTest extends WebTestBase {
     $autologout_settings = $this->configFactory->getEditable('autologout.settings');
     $autologout_role_settings = $this->configFactory->getEditable('autologout.role.authenticated');
     $uid = $this->privilegedUser->id();
-    $autologout_user_settings = $this->configFactory->getEditable('autologout.user.' . $uid);
+    $autologout_user_settings = \Drupal::service('user.data');
 
     // Default used if no role is specified.
     $autologout_settings->set('timeout', 100)
@@ -140,9 +140,8 @@ class AutologoutTest extends WebTestBase {
     $autologout_role_settings->set('enabled', TRUE)
       ->set('timeout', 200)
       ->save();
-    $autologout_user_settings->set('enabled', FALSE)
-      ->set('timeout', '')
-      ->save();
+    $autologout_user_settings->set('autologout', $uid, 'timeout', '');
+    $autologout_user_settings->set('autologout', $uid, 'enabled', FALSE);
     $this->assertAutotimeout($uid, 200, 'User timeout uses role value if personal value is the empty string.');
 
     // Default timeout used if personal timeout is empty string.
@@ -151,9 +150,8 @@ class AutologoutTest extends WebTestBase {
     $autologout_role_settings->set('enabled', FALSE)
       ->set('timeout', 200)
       ->save();
-    $autologout_user_settings->set('enabled', FALSE)
-      ->set('timeout', '')
-      ->save();
+    $autologout_user_settings->set('autologout', $uid, 'timeout', '');
+    $autologout_user_settings->set('autologout', $uid, 'enabled', FALSE);
     $this->assertAutotimeout($uid, 100, 'User timeout uses default value if personal value is the empty string and no role timeout is specified.');
 
     // Personal timeout used if set.
@@ -162,9 +160,8 @@ class AutologoutTest extends WebTestBase {
     $autologout_role_settings->set('enabled', FALSE)
       ->set('timeout', 200)
       ->save();
-    $autologout_user_settings->set('enabled', TRUE)
-      ->set('timeout', 300)
-      ->save();
+    $autologout_user_settings->set('autologout', $uid, 'timeout', 300);
+    $autologout_user_settings->set('autologout', $uid, 'enabled', TRUE);
     $this->assertAutotimeout($uid, 300, 'User timeout uses default value if personal value is the empty string and no role timeout is specified.');
   }
 
