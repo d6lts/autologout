@@ -175,7 +175,7 @@ class AutologoutTest extends WebTestBase {
     $this->assertText('Log out', 'User is still logged in.');
 
     // Wait for timeout period to elapse.
-    sleep(20);
+    sleep(30);
 
     // Check we are now logged out.
     $this->drupalGet('node');
@@ -295,7 +295,7 @@ class AutologoutTest extends WebTestBase {
     $this->assertText(t("Here you can find a short overview of your site's parameters as well as any problems detected with your installation."), 'User can access elements of the admin page.');
 
     // Wait for timeout period to elapse.
-    sleep(20);
+    sleep(30);
 
     // Check we are now logged out.
     $this->drupalGet('admin/reports/status');
@@ -320,7 +320,7 @@ class AutologoutTest extends WebTestBase {
     $this->assertText(t('Log out'), 'User is still logged in.');
 
     // Wait for timeout period to elapse.
-    sleep(20);
+    sleep(30);
 
     // Check we are still logged in.
     $this->drupalGet('node');
@@ -344,7 +344,7 @@ class AutologoutTest extends WebTestBase {
       ->save();
 
     // Wait for 20 seconds for timeout.
-    sleep(20);
+    sleep(30);
 
     // Access the admin page and verify user is logged out and custom message
     // is displayed.
@@ -369,7 +369,7 @@ class AutologoutTest extends WebTestBase {
     $this->assertResponse('200', 'Admin pages are accessible');
 
     // Wait until timeout.
-    sleep(20);
+    sleep(30);
 
     // Verify admin should be logged out.
     $this->drupalGet('admin/reports/status');
