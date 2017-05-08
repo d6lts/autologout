@@ -14,7 +14,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *
  * @Block(
  *   id = "autologout_warning_block",
- *   admin_label = @Translation("Automated Logout info"),
+ *   admin_label = @Translation("Automated logout info"),
  *   category = @Translation("User"),
  * )
  */
