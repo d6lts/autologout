@@ -117,7 +117,7 @@ class AutologoutWarningBlock extends BlockBase implements ContainerFactoryPlugin
     }
     else {
       $timeout = (int) $this->autoLogoutSettings->get('timeout');
-      $markup = $this->t('You will be logged out in @time if this page is not refreshed before then.', array('@time' => $this->dateFormatter->formatInterval($timeout)));
+      $markup = $this->t('You will be logged out in @time if this page is not refreshed before then.', ['@time' => $this->dateFormatter->formatInterval($timeout)]);
     }
 
     return [

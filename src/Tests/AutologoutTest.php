@@ -207,7 +207,7 @@ class AutologoutTest extends WebTestBase {
    * Test the behaviour of the settings for submission.
    */
   public function testAutologoutSettingsForm() {
-    $edit = array();
+    $edit = [];
     $autologout_settings = $this->configFactory->getEditable('autologout.settings');
     $autologout_settings->set('max_timeout', 1000)
       ->save();
