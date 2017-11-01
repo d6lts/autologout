@@ -700,7 +700,7 @@ function _autologout_logout_role($user) {
 function _autologout_inactivity_message() {
   $message = variable_get('autologout_inactivity_message', 'You have been logged out due to inactivity.');
   if (!empty($message)) {
-    drupal_set_message(t($message));
+    drupal_set_message(filter_xss(t($message)));
   }
 }
 

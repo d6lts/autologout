@@ -86,7 +86,9 @@ function autologout_settings() {
     '#title' => t('Message to display to the user after they are logged out.'),
     '#default_value' => variable_get('autologout_inactivity_message', 'You have been logged out due to inactivity.'),
     '#size' => 40,
-    '#description' => t('This message is displayed after the user was logged out due to inactivity. You can leave this blank to show no message to the user.'),
+    '#description' => t('This message is displayed after the user was logged out due to inactivity. You can leave this blank to show no message to the user.')
+      . ' ' . t('This text will passed through <a href="!url">filter_xss</a>.',
+        array('!url' => "https://api.drupal.org/api/drupal/includes%21common.inc/function/filter_xss/6.x")),
   );
 
   $form['autologout_use_watchdog'] = array(
